@@ -1,11 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+struct Pair{ //declaring a structure for combined minMax usage 
+    int min,max;
+};
+
+struct Pair solveUsingTournament(int arr[],int start, int end){
+    struct Pair minMax, minMaxR, minMaxL;
+    
+    
+    return minMax;    
+}
+
 int main(){
     vector<int> arr={1,2,3,4,5,6}; //using stl capabilities and sorting vector to directly assign the min,max value 
     int n = sizeof(arr)/sizeof(int);
     // int arr[6] = {1,2,3,4,5,6}; //for the linear search method iterating through the array
-    int min,max;
+    struct Pair minMax;
     
     //using Simple Linear search method
     // if (arr[0] > arr[1]){
@@ -27,11 +38,14 @@ int main(){
     
     //using STL
     sort(arr.begin(),arr.end()); //sort function takes O(nlogn) time which is slower than linear search above taking O(n) time
-    max=arr[n-1];
-    min=arr[0];
+    minMax.max=arr[n-1];
+    minMax.min=arr[0];
+    
+    //using Tournament method
+    // minMax = solveUsingTournament(arr,0,n-1);
     
     //printing min-max values
-    cout<<"minimum value:"<<min<<endl;
-    cout<<"maximum value:"<<max<<endl;
+    cout<<"minimum value:"<<minMax.min<<endl;
+    cout<<"maximum value:"<<minMax.max<<endl;
     
 }
