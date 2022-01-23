@@ -3,10 +3,24 @@ using namespace std;
 
 int main()
 {
-    vector<int> arr = {2,1,3,5,4,6};
-    int n = arr.size();
-    int k=1;
-    sort(arr.begin(),arr.end());
-    cout<<k<<"th minimum element: "<<arr[k-1]<<endl;
-    cout<<k<<"th maximum element: "<<arr[n-k]<<endl;
+    int k=2; 
+    
+    //using set STL
+    int arr[6] = {2,1,3,5,4,6};
+    int n = sizeof(arr)/sizeof(int);
+    set<int> S(arr,arr+n); //initialising the set takes O(logn) time 
+    
+    //using sort with vector STL
+    // vector<int> S = {2,1,3,5,4,6}; 
+    // int n = S.size();
+    // sort(S.begin(),S.end());// sorting of vector takes O(nlogn) time
+    
+    //iterating for min-max values
+    auto it_min = S.begin();
+    auto it_max = S.begin();
+    advance(it_min,k-1);
+    advance(it_max,n-k);
+    cout<<k<<"th minimum element: "<<*it_min<<endl;
+    cout<<k<<"th maximum element: "<<*it_max<<endl;
+    
 }
