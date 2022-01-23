@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    vector<int> arr={1,2,3,4,5,6}; //using stl capabilities and sorting vector to directly assign the min,max value 
+    int n = sizeof(arr)/sizeof(int);
+    // int arr[6] = {1,2,3,4,5,6}; //for the linear search method iterating through the array
+    int min,max;
+    
+    //using Simple Linear search method
+    // if (arr[0] > arr[1]){
+    //     max = arr[0];
+    //     min = arr[1];
+    // }else{
+    //     max = arr[1];
+    //     min = arr[0];
+    // }
+    // for(int i=2;i<n;i++){
+    //     int x = arr[i];
+    //     if(min>x){
+    //         min=x;
+    //     }
+    //     else if(max<x){
+    //         max=x;
+    //     }
+    // }
+    
+    //using STL
+    sort(arr.begin(),arr.end());
+    max=arr[n-1];
+    min=arr[0];
+    
+    //printing min-max values
+    cout<<"minimum value:"<<min<<endl;
+    cout<<"maximum value:"<<max<<endl;
+    
+}
