@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    vector<int> arr = {2,1,3,5,4,6};
+    int n = arr.size();
+    int k=1;
+    sort(arr.begin(),arr.end());
+    cout<<k<<"th minimum element: "<<arr[k-1]<<endl;
+    cout<<k<<"th maximum element: "<<arr[n-k]<<endl;
+}
