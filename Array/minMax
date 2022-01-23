@@ -26,7 +26,7 @@ int main(){
     // }
     
     //using STL
-    sort(arr.begin(),arr.end());
+    sort(arr.begin(),arr.end()); //sort function takes O(nlogn) time which is slower than linear search above taking O(n) time
     max=arr[n-1];
     min=arr[0];
     
