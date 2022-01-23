@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void swap(int arr[],int low,int mid){
+    int temp = arr[low];
+    arr[low] = arr[mid];
+    arr[mid] = temp;
+} 
+void DNFsort(int arr[], int n){
+    int low=0, mid=0, high=n-1;
+    
+    while(mid<=high){
+        if(arr[mid]<0){
+            swap(arr,low,mid);
+            mid++;
+            low++;
+        }else{
+            swap(arr,mid,high);
+            high--;
+        }
+    }
+    
+}
+
+int main(){
+    int arr[9] = {-12, 11, -13, -5, 6, -7, 5, -3, -6};
+    int n = sizeof(arr)/sizeof(int);
+    
+    DNFsort(arr,n);
+    
+    for(int i = 0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+}
