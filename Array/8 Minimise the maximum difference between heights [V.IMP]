@@ -1,0 +1,42 @@
+//Question: Minimise the maximum difference between heights [V.IMP]
+
+/***************
+
+Here we find the minimum value of difference of maximum height of tower and minimum height of tower
+also we need to add/subtract k height from all the towers in order to achieve minimum difference possible.
+
+so we try to achieve the least and most height of towers first
+least height is achieved by increasing k to lowest tower because we want to decrease the difference b/w the heights
+most height is achieved by decreasing k from highest tower because we want to decrease the difference b/w the heights
+
+
+next we maintain the 
+
+***************/
+
+#include<bits/stdc++.h> 
+using namespace std;
+
+int main(){
+    int arr[] = {3,9, 12, 16, 20};
+    int n = *(&arr +1)-arr;
+    int k = 3;
+    sort(arr,arr+n);
+    int diff = arr[n-1]-arr[0];
+    int min_value, max_value, Kmin,Kmax;
+    min_value = arr[0]+k; //minimum value + k gives us the least value of tower possible
+    max_value = arr[n-1]-k;//maximm value - k gives us the max value of tower possible
+    
+    for(int i=0;i<n-1;i++){ //here we will iterate through the loop for n-2 times 
+        Kmin = min(arr[i+1]-k,min_value); //we want to minimize the difference so the we don't check arr[0]-k which would increase the difference
+        Kmax = max(arr[i]+k,max_value); //we want to minimize the difference so the we don't check arr[n-1]+k which would increase the difference
+        
+        if(Kmin<0){ //to check that the height of any tower does not go negetive
+            continue;
+        }else{
+            diff = min(diff,Kmax-Kmin);
+        }
+    }
+    cout<<diff;
+}
+    
