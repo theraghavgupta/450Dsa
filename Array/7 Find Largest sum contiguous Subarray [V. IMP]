@@ -19,16 +19,26 @@ we continue our iterations through the array and finally get the max_sum which i
 using namespace std;
 
 int main(){
-    
-    int arr[] = {1,2,3,-2,5};
+    // int arr[] = {-2, -3, 4, -1, -2, 1, 5, -3};
+    int arr[] = {1,2,-2,3,4,-5,6,8,-7};
     int n = *(&arr +1)-arr;
     int sum=0,max_sum=INT_MIN;
+    int start=0,end=0,s=0;
     for(int i=0;i<n;i++){
         sum += arr[i];
-        max_sum=max(max_sum,sum);
+        // max_sum=max(max_sum,sum);
+        if(max_sum<sum){
+            max_sum=sum;
+            start = s;
+            end = i;
+        }
         if(sum<0){
             sum=0;
+            s=i+1;
         }
     }
-    cout<< max_sum;
+    cout<<"Maximum Sum: "<< max_sum<<endl<<"The sub-array is: ";
+    for(int i=start;i<=end;i++){
+        cout<<arr[i]<<" ";
+    }
 }
