@@ -1,0 +1,34 @@
+//Question: Kadane's Algo [V.V.V.V.V IMP]
+
+/******************
+
+Kadane's Algorithm 
+
+we initialize max_sum as INT_MIN and sum_soFar as 0
+
+we start iterating through the array and add the value of array at ith index to the sum_soFar
+we check for the value of max_sum and sum_soFar and update the max of both to max_sum
+
+Further we check if the value of sum_soFar becomes less than 0 we greedily equate the value to 0
+
+we continue our iterations through the array and finally get the max_sum which is equal to sum of contiguous sub-array elements with Maximum Sum
+
+******************/
+
+#include<bits/stdc++.h> 
+using namespace std;
+
+int main(){
+    
+    int arr[] = {1,2,3,-2,5};
+    int n = *(&arr +1)-arr;
+    int sum=0,max_sum=INT_MIN;
+    for(int i=0;i<n;i++){
+        sum += arr[i];
+        max_sum=max(max_sum,sum);
+        if(sum<0){
+            sum=0;
+        }
+    }
+    cout<< max_sum;
+}
