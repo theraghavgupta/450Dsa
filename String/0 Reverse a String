@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void reverse_string(vector<char>::iterator low,vector<char>::iterator high){
+    for(low,high;low<high;low++,high--){
+        swap(*low,*high);
+    }
+}
+
+void k_reverse(vector<char>& s,int k){
+    auto start=s.begin();
+    auto end = s.end()-1;
+    while(end>start){
+        auto low = start;
+        auto high = start+k-1;
+        high = min(high,end);
+        reverse_string(low,high);
+        start=start+2*k;
+    }
+}
+
+
+int main(){
+    string S="RaghavGupta";
+    vector<char> s(S.begin(),S.end());
+    int k=2; //k_reverse result: aRghvaGutpa
+    
+    //reverse the entire string(leetcode: reverse the string 1)
+    reverse(s.begin(),s.end());
+    reverse_string(s.begin(),s.end()-1);
+    
+    
+    //reverse the first k characters for every 2k characters
+    k_reverse(s,k);
+    
+    for(char x:s){
+        cout<<x;
+    }
+    
+    return 0;
+}
