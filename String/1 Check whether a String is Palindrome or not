@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int isPalindrome(string S){
+    // Your code goes here
+    auto start = S.begin();
+    auto end = S.end()-1;
+    for(start,end;start<end;start++,end--){
+        if(*start!=*end){
+            return 0;
+        }
+    }
+    return 1;
+    
+}
+
+int main(){
+    string S = "raghhgr";
+    if(isPalindrome(S)==0) cout<<"Is Palindrome";
+    else cout<<"Not Palindrome";
+    
+}
