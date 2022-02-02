@@ -1,0 +1,20 @@
+//Question: Write a Code to check whether one string is a rotation of another
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void find_rot(string s1,string s2){
+    string temp = s1+s1;
+
+    (temp.find(s2)!=string::npos)?cout<<"Strings are rotation of each other"
+    :cout<<"Strings are not rotation of each other";
+}
+
+int main(){
+    string s1,s2;
+    s1 = "ABCD";
+    s2 = "CDAB";
+    find_rot(s1,s2);
+    
+    return 0;
+}
