@@ -1,0 +1,64 @@
+//Question: find duplicate in an array of N+1 Integers
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int findDuplicate_basic(vector<int>& nums) {
+    int duplicate;
+    for(int x=0;x<=nums.size();x++){
+        for(int y=x+1;y<=nums.size();y++){
+            if(nums[x]==nums[y]){
+                duplicate = nums[x];
+                break;
+            }
+        }
+    }
+    return duplicate;
+}
+
+int findDuplicate_sum(vector<int>& nums){
+    int sum = 0;
+    for(int x=0;x<nums.size();x++){
+        sum+=nums[x];
+    }
+    int sum_n,n=nums.size()-1;
+    sum_n = n*(n+1)/2;
+    return (sum-sum_n);
+} 
+
+int findDuplicate3(vector<int>& nums){
+	if (nums.size() > 1){
+		int slow = nums[0];
+		int fast = nums[nums[0]];
+		while (slow != fast){
+			slow = nums[slow];
+			fast = nums[nums[fast]];
+		}
+
+		fast = 0;
+		while (fast != slow){
+			fast = nums[fast];
+			slow = nums[slow];
+		}
+		return slow;
+	}
+	return -1;
+}
+
+int main(){
+    vector<int> arr = {1,2,2};
+    // vector<int> arr = {1, 3,5 , 8, 9 ,2 ,6, 7, 6};  
+    // int n = *(&arr+1)-arr;
+    
+    // int n;
+    // cin>>n;
+    // int arr[n];
+    // for(int i=0;i<n;i++){
+    //     cin>>arr[i];
+    // }
+    
+    int duplicate = findDuplicate_basic(arr); //This basic method takes O(n*n) time which is very high (Leetcode RuntimeError)
+    int duplicate_sum = findDuplicate_sum(arr); //the nethod of sum of n terms works only if the duplicate integer is repeating only 1 times
+    int duplicate3 = findDuplicate3(arr); //Optimal Solution (Leetcode 42% faster) 
+    cout<<duplicate3;
+}
