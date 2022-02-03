@@ -1,0 +1,80 @@
+//Question: Minimum no. of Jumps to reach end of an array
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int Jumps(int arr[],int n){
+    int i=0,jump=0,index=0;
+    while(i<n-1){
+        if(i+arr[i]<n-1){
+            int step_size = INT_MIN;
+            for(int j=i;j<=i+arr[i];j++){
+                int j_size = arr[j]+j;
+                if(arr[j]==0){
+                    return -1;
+                }
+                step_size=max(step_size,j_size);
+                if(n-1<=step_size){
+                    jump+=2;
+                    return jump;
+                }else if(j_size==step_size){
+                    index = j;
+                }
+            }
+            i=index;
+            jump++;
+        }else{
+            jump++;
+            return jump;
+        }    
+    }
+    return jump;
+}
+
+int myJumps(int arr[],int n){
+    int jump_size=0,i=0,jump=0;
+    while(i<n-1){
+        jump_size = arr[i];
+        if(jump_size<=0){
+            return -1;
+        }
+        int step_size = jump_size;
+        int index=0;
+    
+        for(int j=i+1;j<=i+jump_size;j++){
+            if(arr[j]>step_size){
+                step_size = arr[j];
+                index = j;
+            }
+        }
+        if(index==0){
+            index =i+ jump_size;
+        }
+        i=index;
+        jump++;
+    }
+    return jump;
+}
+
+int main(){
+    // int arr[] = {1, 3,5 , 8, 9 ,2 ,6, 7, 6, 8, 9};  
+    // int arr[] = {2, 3, 1, 1, 2, 4, 2 ,0 ,1 ,1};   
+    int arr[] = {9 ,10, 1, 2, 3, 4, 8, 0, 0, 0, 0, 0, 0, 0, 1};
+    int n = *(&arr+1)-arr;
+    
+    // int n;
+    // cin>>n;
+    // int arr[n];
+    // for(int i=0;i<n;i++){
+    //     cin>>arr[i];
+    // }
+    int jumps,myjumps;
+    jumps = Jumps(arr,n);
+    // myjumps = myJumps(arr,n); //not complete for all test cases
+    
+    cout<<jumps;
+    
+}
+
+
